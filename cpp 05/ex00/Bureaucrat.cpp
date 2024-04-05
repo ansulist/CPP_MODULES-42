@@ -6,7 +6,7 @@
 /*   By: ansulist <ansulist@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:06:42 by ansulist          #+#    #+#             */
-/*   Updated: 2024/04/04 22:07:13 by ansulist         ###   ########.fr       */
+/*   Updated: 2024/04/04 19:00:15 by ansulist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,6 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
     if (this != &other)
         _grade = other.getGrade();
     return *this;
-}
-
-void    Bureaucrat::signForm( Form& form ) {
-    try {
-        form.signedform(*this);
-        std::cout << *this << " signed " << form.getname() << std::endl;
-    } catch (Form::GradeTooLowException &e) {
-        std::cout << _name << " coulnd't sign " << form.getname() << " because " << e.what() << std::endl;
-    }
 }
 
 std::ostream& operator<<(std::ostream& other, const Bureaucrat& things)

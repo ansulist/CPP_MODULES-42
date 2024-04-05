@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ansulist <ansulist@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/21 13:06:48 by ansulist          #+#    #+#             */
-/*   Updated: 2024/04/05 09:54:08 by ansulist         ###   ########.fr       */
+/*   Created: 2024/04/05 11:08:45 by ansulist          #+#    #+#             */
+/*   Updated: 2024/04/05 11:09:22 by ansulist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#ifndef INTERN_HPP
+#define INTERN_HPP
+
 #include "Form.hpp"
 
-int main( void )
-{
+class Intern {
 
-    try {
-        Bureaucrat bureaucrat("ash", 1);
-        Form form("form Name", 10);
+public:
+    Intern();
+    Intern( const Intern& src );
+    ~Intern();
 
-        bureaucrat.signForm(form);
+    Intern& operator=( const Intern& rhs );
 
-        std::cout << form << std::endl;
-    } catch (std::exception &e) {
-        std::cout << e.what() << std::endl;
-    }
-    return EXIT_SUCCESS;
-}
+    Form*   makeForm( std::string name, std::string target );
+};
+
+#endif

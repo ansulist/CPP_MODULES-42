@@ -6,7 +6,7 @@
 /*   By: ansulist <ansulist@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:06:45 by ansulist          #+#    #+#             */
-/*   Updated: 2024/04/04 22:02:29 by ansulist         ###   ########.fr       */
+/*   Updated: 2024/04/04 18:52:37 by ansulist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,14 @@
 #define BUREAUCRAT_HPP
 
 #include <iostream>
-#include "Form.hpp"
-
-class Form;
 
 class Bureaucrat
 {
     private:
         std::string _name;
         int _grade;
-
-        Bureaucrat();
     public:
+        Bureaucrat();
         ~Bureaucrat();
         Bureaucrat(const std::string&, int grade);
         std::string getName() const;
@@ -33,7 +29,6 @@ class Bureaucrat
         Bureaucrat &operator= (const Bureaucrat& other);
         void incrementGrade();
         void decrementGrade();
-        void signForm(Form& form);
 
     class GradeTooHighException : public std::exception
     {
