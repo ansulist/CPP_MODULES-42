@@ -1,8 +1,8 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
-NAME = conversion
-SRCS = conversion.cpp main.cpp
+NAME = real
+SRCS = main.cpp real.cpp a.cpp b.cpp c.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
