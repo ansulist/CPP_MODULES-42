@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ansulist <ansulist@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 19:18:10 by ansulist          #+#    #+#             */
-/*   Updated: 2024/04/05 11:07:02 by ansulist         ###   ########.fr       */
+/*   Updated: 2024/08/21 20:45:22 by ansulist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
-// Form::Form(void) : _name("unknown"), _gradeexecute(0), _gradesigned(0), _signed(0)
-// {
-//     std::cout << "Constructor has been called" << std::endl;
-// }
+Form::Form(void) : _name("unknown"), _signed(0), _gradesigned(0), _gradeexecute(0)
+{
+    std::cout << "Constructor has been called" << std::endl;
+}
 
 Form::~Form()
 {
     std::cout << "Constructor has been called" << std::endl;
 }
 
-Form::Form(const std::string &name, int gradesigned, int gradeexecute) : _name(name), _gradesigned(gradesigned), _gradeexecute(gradeexecute)
+Form::Form(const std::string &name, int gradesigned, int gradeexecute) : _name(name), _signed(0), _gradesigned(gradesigned), _gradeexecute(gradeexecute)
 {
     if (gradesigned < 1 || gradeexecute < 1)
         throw Form::GradeTooHighException();
@@ -67,6 +67,11 @@ void Form::signedform(const Bureaucrat& b)
     if (b.getGrade() > _gradesigned)
         throw Form::GradeTooLowException();
     _signed = true;
+}
+
+void Form::setSign(bool sign) 
+{
+	this->_signed = sign;
 }
 
 std::ostream&   operator<<( std::ostream&others, const Form& a ) 

@@ -6,7 +6,7 @@
 /*   By: ansulist <ansulist@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:06:45 by ansulist          #+#    #+#             */
-/*   Updated: 2024/04/05 11:02:55 by ansulist         ###   ########.fr       */
+/*   Updated: 2024/08/21 20:46:27 by ansulist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define BUREAUCRAT_HPP
 
 #include <iostream>
-#include "Form.hpp"
+#include "AForm.hpp"
 
 class Form;
 

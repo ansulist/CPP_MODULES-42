@@ -6,26 +6,35 @@
 /*   By: ansulist <ansulist@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 08:27:43 by ansulist          #+#    #+#             */
-/*   Updated: 2024/04/05 09:55:12 by ansulist         ###   ########.fr       */
+/*   Updated: 2024/08/19 14:44:13 by ansulist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string& target) : Form("PresidentialPardonForm", 25, 5), _target(target)
+PresidentialPardonForm::PresidentialPardonForm(const std::string& target) : Form(target, 25, 5)
 {
+    std::cout << "Presidential Pardon Form " << target << " created" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& src) : Form(src), _target( src._target )
+PresidentialPardonForm::PresidentialPardonForm() : Form("Unknown", 25, 5)
 {
+    std::cout << "Default Presidential Pardon Form created" << std::endl;
+}
+
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &s): Form(s)
+{
+	*this = s;
 }
 
 PresidentialPardonForm::~PresidentialPardonForm()
 {
+    
 }
 
-PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& other) {
-    (void)other;
+PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& other)
+{
+    setSign(other.getsigned());
     return *this;
 }
 

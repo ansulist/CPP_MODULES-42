@@ -6,7 +6,7 @@
 /*   By: ansulist <ansulist@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 19:18:14 by ansulist          #+#    #+#             */
-/*   Updated: 2024/04/05 08:40:09 by ansulist         ###   ########.fr       */
+/*   Updated: 2024/08/15 21:10:04 by ansulist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class Form
         Form();
     public:
         ~Form();
-        Form(const std::string &name, int gradesigned);
+        Form(const std::string &name, int gradesigned, int gradeexecute);
         Form(const Form&source);
         std::string getname() const;
         bool getsigned() const;

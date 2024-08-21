@@ -6,23 +6,23 @@
 /*   By: ansulist <ansulist@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 19:18:10 by ansulist          #+#    #+#             */
-/*   Updated: 2024/04/05 11:07:11 by ansulist         ###   ########.fr       */
+/*   Updated: 2024/08/15 21:13:27 by ansulist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-// Form::Form(void) : _name("unknown"), _gradeexecute(0), _gradesigned(0)
-// {
-//     std::cout << "Constructor has been called" << std::endl;
-// }
+Form::Form(void) : _name("unknown"), _gradesigned(150), _gradeexecute(150)
+{
+    std::cout << "Constructor has been called" << std::endl;
+}
 
 Form::~Form()
 {
     std::cout << "Destructor has been called" << std::endl;
 }
 
-Form::Form(const std::string &name, int gradesigned) : _name(name), _gradesigned(gradesigned), _gradeexecute(0)
+Form::Form(const std::string &name, int gradesigned, int gradeexecute) : _name(name), _gradesigned(gradesigned), _gradeexecute(gradeexecute)
 {
     if (gradesigned < 1)
         throw Form::GradeTooHighException();
@@ -32,7 +32,7 @@ Form::Form(const std::string &name, int gradesigned) : _name(name), _gradesigned
 
 Form::Form(const Form&source) : _name(source.getname()), _gradesigned(source.gradesigned()), _gradeexecute(source.gradeexecute())
 {
-    std::cout << "Getters has been called" << std::endl;
+    std::cout << "form source has been called" << std::endl;
 }
 
 Form&   Form::operator=(const Form& other) 

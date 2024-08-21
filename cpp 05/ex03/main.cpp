@@ -6,11 +6,11 @@
 /*   By: ansulist <ansulist@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:06:48 by ansulist          #+#    #+#             */
-/*   Updated: 2024/04/05 11:12:43 by ansulist         ###   ########.fr       */
+/*   Updated: 2024/08/21 20:49:15 by ansulist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
@@ -19,32 +19,23 @@
 
 int main( void )
 {
-    {
-        Intern  someRandomIntern;
-        Form*   rrf;
-        rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-        delete rrf;
-    }
+    std::cout << "\033[33m" << std::endl << "Test ex03 Intern" << "\033[0m" << std::endl;
+	Intern Jr_Intern;
+	Form *robo_intern;
+	Bureaucrat b("Big Guy", 40);
 
-    try {
-        Bureaucrat bureaucrat("ash", 2); // error with 200
-        ShrubberyCreationForm form1("Shrubbery");
-        RobotomyRequestForm form2("Robotomy");
-        PresidentialPardonForm form3("President");
-        std::cout << "\n--------------- Form 1 ( Shrubbery ) ---------------" << std::endl;
-        bureaucrat.signForm(form1);
-        bureaucrat.executeform(form1);
-        std::cout << "\n--------------- Form 2 ( Robotomy ) ---------------" << std::endl;
-        bureaucrat.signForm(form2);
-        bureaucrat.executeform(form2);
-        bureaucrat.executeform(form2);
-        bureaucrat.executeform(form2);
-        bureaucrat.executeform(form2);
-        std::cout << "\n--------------- Form 3 ( President ) ---------------" << std::endl;
-        bureaucrat.signForm(form3);
-        bureaucrat.executeform(form3);
-    } catch (std::exception &e) {
-        std::cout << e.what() << std::endl;
-    }
-    return EXIT_SUCCESS;
+	try
+	{
+		robo_intern = Jr_Intern.makeForm("robotomyrequestform", "World");
+		b.signForm(*robo_intern);
+		b.executeform(*robo_intern);
+		delete robo_intern;
+		robo_intern = Jr_Intern.makeForm("DoYouKnowMe", "Hmmmm");
+		
+	}
+	catch(const std::exception& e)
+	{
+			std::cerr << "sorry that form doesn't exist" << std::endl;
+	}
+	return (0);
 }

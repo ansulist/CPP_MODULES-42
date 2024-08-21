@@ -2,7 +2,7 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 NAME = Form
-SRCS = conversion.cpp main.cpp
+SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
@@ -18,7 +18,7 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
-
+ n
 re: fclean all
 
 .PHONY: all clean fclean re

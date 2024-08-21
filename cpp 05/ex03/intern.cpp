@@ -6,7 +6,7 @@
 /*   By: ansulist <ansulist@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 11:08:41 by ansulist          #+#    #+#             */
-/*   Updated: 2024/04/05 11:12:56 by ansulist         ###   ########.fr       */
+/*   Updated: 2024/08/21 21:06:21 by ansulist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,30 +34,35 @@ Intern& Intern::operator=(const Intern& rhs)
     return (*this);
 }
 
-Form*   Intern::makeForm(std::string name, std::string target)
+Form *Intern::createRobotomyRequestForm(const std::string target) 
 {
+    return new RobotomyRequestForm(target);
+}
 
-    std::string formNames[] = 
-    {
-        "robotomy request",
-        "presidential pardon",
-        "shrubbery creation"
-    };
-    Form*    forms[] = 
-    {
-        new RobotomyRequestForm( target ),
-        new PresidentialPardonForm( target ),
-        new ShrubberyCreationForm( target )
-    };
-    
-    for (int i(0); i < 3; i++) 
-    {
-        if (name == formNames[i]) 
-        {
-            std::cout << "Intern creates " << name << std::endl;
-            return forms[i];
-        }
-    }
-    std::cout << "Intern cannot create " << name << " form" << std::endl;
-    return nullptr;
+Form *Intern::createPresidentialPardonForm(const std::string target) 
+{
+    return new PresidentialPardonForm(target);
+}
+
+Form *Intern::createShrubberyCreationForm(const std::string target) 
+{
+    return new ShrubberyCreationForm(target);
+}
+
+Form* Intern::makeForm(const std::string name, const std::string target)
+{
+    int i = 0;
+	std::string listforms[3] = {"shrubberycreationform", "robotomyrequestform", "presidentialpardonform"};
+	form funcs[3] = {&Intern::createShrubberyCreationForm, &Intern::createRobotomyRequestForm, &Intern::createPresidentialPardonForm };
+	while (i < 3)
+	{
+		if (name.compare(listforms[i]) == 0)
+		{
+			std::cout << "Intern created " << name << std::endl;
+			return ((this->*funcs[i])(target));
+		}
+		i++;
+	}
+	throw std::exception();
+	return 0;
 }

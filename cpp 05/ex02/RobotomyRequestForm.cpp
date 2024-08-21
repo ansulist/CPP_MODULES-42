@@ -6,27 +6,34 @@
 /*   By: ansulist <ansulist@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 08:27:50 by ansulist          #+#    #+#             */
-/*   Updated: 2024/04/05 10:02:41 by ansulist         ###   ########.fr       */
+/*   Updated: 2024/08/17 14:49:17 by ansulist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : Form("Robotomy Request Form", 72, 45), _target(target)
-{
+RobotomyRequestForm::RobotomyRequestForm(): Form("Robotomy Request Form", 72, 45)
+{ 
+    std::cout << "Default Robotomy Request Form created" << std::endl;  
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& src) : Form(src), _target(src._target)
+RobotomyRequestForm::RobotomyRequestForm(const std::string& target): Form(target, 72, 45)
 {
+    std::cout << "Robotomy Form " << target << " created" << std::endl;
+}
+
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& src): Form(src)
+{
+    *this = src;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {
 }
 
-RobotomyRequestForm&    RobotomyRequestForm::operator=(RobotomyRequestForm& other) 
+RobotomyRequestForm&    RobotomyRequestForm::operator=(const RobotomyRequestForm& other) 
 {
-    (void)other;
+    setSign(other.getsigned());
     return *this;
 }
 
@@ -38,7 +45,7 @@ void    RobotomyRequestForm::execute(const Bureaucrat& executor) const {
         if (i % 2 == 0)
             std::cout << "Oh OH Oh Bzzt BZzZzZt! " << _target << " has been robotomized!" << std::endl;
         else
-            std::cout << "Oh Noooo!! Robotomy failed! " << _target << " is alive." << std::endl;
+            std::cout << "Oh Noooo!! Robotomy failed! --> " << _target << std::endl;
         i++;
     }
 }

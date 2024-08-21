@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ansulist <ansulist@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 19:18:14 by ansulist          #+#    #+#             */
-/*   Updated: 2024/04/05 11:04:18 by ansulist         ###   ########.fr       */
+/*   Updated: 2024/08/21 20:46:24 by ansulist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
 #include "Bureaucrat.hpp"
 #include <iostream>
@@ -35,6 +35,7 @@ class Form
         int gradesigned() const;
         int gradeexecute() const;
         void signedform(const Bureaucrat& b);
+        void setSign(bool sign);
         Form& operator=(const Form&other);
         virtual void execute(const Bureaucrat& executor) const = 0;
 

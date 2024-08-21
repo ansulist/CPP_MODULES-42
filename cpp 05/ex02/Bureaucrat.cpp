@@ -6,7 +6,7 @@
 /*   By: ansulist <ansulist@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:06:42 by ansulist          #+#    #+#             */
-/*   Updated: 2024/04/05 11:04:01 by ansulist         ###   ########.fr       */
+/*   Updated: 2024/08/15 21:24:57 by ansulist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,19 +69,29 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 
 void    Bureaucrat::signForm(Form& form)
 {
-    try {
-        form.signedform(*this);
-        std::cout << *this << " signed " << form.getname() << std::endl;
-    } catch (Form::GradeTooLowException &e) {
+    try 
+    {
+        if (form.getsigned() == 0)
+        {
+            form.signedform(*this);
+            std::cout << *this << " signed " << form.getname() << std::endl;
+        }
+        else
+            std::cout << "Signatures can only be done once" << std::endl;
+    } 
+    catch (Form::GradeTooLowException &e) {
         std::cout << _name << " coulnd't sign " << form.getname() << " because " << e.what() << std::endl;
     }
 }
 
 void    Bureaucrat::executeform( const Form& form )const 
 {
-    try {
+    try 
+    {
         form.execute(*this);
-    } catch ( std::exception& e ) {
+    } 
+    catch (std::exception& e) 
+    {
         std::cout << _name << " couldn't execute " << form.getname() << " because " << e.what() << std::endl;
     }
 }
