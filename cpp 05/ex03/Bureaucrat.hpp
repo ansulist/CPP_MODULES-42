@@ -6,7 +6,7 @@
 /*   By: ansulist <ansulist@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:06:45 by ansulist          #+#    #+#             */
-/*   Updated: 2024/08/21 20:46:27 by ansulist         ###   ########.fr       */
+/*   Updated: 2024/08/22 14:39:44 by ansulist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@ class Form;
 class Bureaucrat
 {
     private:
-        std::string _name;
+        const std::string _name;
         int _grade;
 
         Bureaucrat();
     public:
         ~Bureaucrat();
+		Bureaucrat(const Bureaucrat &copy);
         Bureaucrat(const std::string&, int grade);
         std::string getName() const;
         int getGrade() const;

@@ -6,7 +6,7 @@
 /*   By: ansulist <ansulist@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:06:45 by ansulist          #+#    #+#             */
-/*   Updated: 2024/04/04 22:02:29 by ansulist         ###   ########.fr       */
+/*   Updated: 2024/08/22 14:38:27 by ansulist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,17 @@ class Form;
 class Bureaucrat
 {
     private:
-        std::string _name;
+        const std::string _name;
         int _grade;
 
-        Bureaucrat();
     public:
+		Bureaucrat();
         ~Bureaucrat();
         Bureaucrat(const std::string&, int grade);
+		Bureaucrat(const Bureaucrat &copy);
+		Bureaucrat &operator= (const Bureaucrat& other);
         std::string getName() const;
         int getGrade() const;
-        Bureaucrat &operator= (const Bureaucrat& other);
         void incrementGrade();
         void decrementGrade();
         void signForm(Form& form);
