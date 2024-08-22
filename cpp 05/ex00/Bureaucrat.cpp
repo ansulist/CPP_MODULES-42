@@ -6,14 +6,14 @@
 /*   By: ansulist <ansulist@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:06:42 by ansulist          #+#    #+#             */
-/*   Updated: 2024/08/13 11:32:23 by ansulist         ###   ########.fr       */
+/*   Updated: 2024/08/22 14:22:53 by ansulist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
 /*---------- Constructor and desdructor ----------*/
-Bureaucrat::Bureaucrat()
+Bureaucrat::Bureaucrat(): _name("noname"), _grade(150)
 {
     std::cout << "Constructor has been called" << std::endl;
 }
@@ -21,6 +21,19 @@ Bureaucrat::Bureaucrat()
 Bureaucrat::~Bureaucrat()
 {
     std::cout << "Destructor has been called" << std::endl;
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat &copy): _name(copy._name), _grade(copy._grade)
+{
+	std::cout << "copy constructor has been called" << std::endl;
+}
+
+/*---------- operators ----------*/
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) 
+{
+    if (this != &other)
+        _grade = other.getGrade();
+    return *this;
 }
 
 // comparison and limitation of each grades
@@ -57,14 +70,6 @@ void Bureaucrat::decrementGrade()
     if (_grade + 1 > 150)
         throw Bureaucrat::GradeTooHighException();
     _grade += 1;
-}
-
-/*---------- operators ----------*/
-Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) 
-{
-    if (this != &other)
-        _grade = other.getGrade();
-    return *this;
 }
 
 std::ostream& operator<<(std::ostream& other, const Bureaucrat& things)

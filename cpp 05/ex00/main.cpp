@@ -6,7 +6,7 @@
 /*   By: ansulist <ansulist@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:06:48 by ansulist          #+#    #+#             */
-/*   Updated: 2024/08/13 11:32:32 by ansulist         ###   ########.fr       */
+/*   Updated: 2024/08/22 14:23:33 by ansulist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int main (void)
         Bureaucrat b;
         Bureaucrat c ("anita", 2);
         a.incrementGrade();
+		std::cout << b << std::endl;
     } 
     catch (Bureaucrat::GradeTooHighException &example)
     {

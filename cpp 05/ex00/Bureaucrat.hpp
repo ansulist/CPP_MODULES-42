@@ -6,7 +6,7 @@
 /*   By: ansulist <ansulist@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:06:45 by ansulist          #+#    #+#             */
-/*   Updated: 2024/04/04 18:52:37 by ansulist         ###   ########.fr       */
+/*   Updated: 2024/08/22 14:20:30 by ansulist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,19 @@
 class Bureaucrat
 {
     private:
-        std::string _name;
+        const std::string _name;
         int _grade;
+		
     public:
-        Bureaucrat();
+		// the Canonical form //
         ~Bureaucrat();
-        Bureaucrat(const std::string&, int grade);
+		Bureaucrat();
+		Bureaucrat(const Bureaucrat &copy);
+        Bureaucrat(const std::string &name, int grade);
+		Bureaucrat &operator= (const Bureaucrat& other);
+		
         std::string getName() const;
         int getGrade() const;
-        Bureaucrat &operator= (const Bureaucrat& other);
         void incrementGrade();
         void decrementGrade();
 
