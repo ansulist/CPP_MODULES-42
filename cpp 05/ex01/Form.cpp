@@ -6,13 +6,13 @@
 /*   By: ansulist <ansulist@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 19:18:10 by ansulist          #+#    #+#             */
-/*   Updated: 2024/08/22 14:42:13 by ansulist         ###   ########.fr       */
+/*   Updated: 2024/08/23 11:29:16 by ansulist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form::Form(void) : _name("unknown"), _gradesigned(150), _gradeexecute(150)
+Form::Form() : _name("unknown"), _gradesigned(150), _gradeexecute(150)
 {
     std::cout << "Constructor has been called" << std::endl;
 }
@@ -37,7 +37,7 @@ Form::Form(const Form&source) : _name(source.getname()), _gradesigned(source.gra
 
 Form&   Form::operator=(const Form& other) 
 {
-    if ( this != &other )
+    if (this != &other)
         _signed = other.getsigned();
     return *this;
 }

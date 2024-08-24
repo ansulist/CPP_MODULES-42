@@ -3,4 +3,5 @@
 // Destructor
 Base::~Base()
 {
+    
 }

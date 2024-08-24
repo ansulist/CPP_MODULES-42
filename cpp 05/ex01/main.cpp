@@ -6,7 +6,7 @@
 /*   By: ansulist <ansulist@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:06:48 by ansulist          #+#    #+#             */
-/*   Updated: 2024/08/15 21:15:26 by ansulist         ###   ########.fr       */
+/*   Updated: 2024/08/23 11:28:22 by ansulist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int main( void )
 {
     Form x("Form X", 10, 8);
     Form y("Form Y", 120, 80);
-    std::cout << x << std::endl << y << std::endl;
+
+    Form a(y);
+    std::cout << x << std::endl << y << std::endl << a << std::endl;
     return EXIT_SUCCESS;
 }
