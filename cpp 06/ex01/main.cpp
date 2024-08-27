@@ -2,44 +2,23 @@
 
 int main()
 {
-	Data ptr2;
-	ptr2.name = "Michaela Mustermann";
-	ptr2.age = 42;
-	ptr2.next = NULL;
+	Data data;
+	data.name = "just anita";
+	data.num = 129;
+	
+	uintptr_t serializedValue = Serializer::serialize(&data);
+	
+	std::cout << "-----------------------------------------------------------------------------" << std::endl;
+	std::cout << "serializedValue  : " << serializedValue << std::endl;
+	std::cout << "-----------------------------------------------------------------------------" << std::endl;
+	
+	Data *deserializedValue = Serializer::deserialize(serializedValue);
 
-	Data ptr;
-	ptr.name = "Max Mustermann";
-	ptr.age = 42;
-	ptr.next = &ptr2;
-
-
-	std::cout << "Here is the original structs:" <<
-				"\n\taddress: " << &ptr <<
-				"\n\tname: " << ptr.name <<
-				"\n\tage: " << ptr.age <<
-				"\n\taddress next: " << ptr.next <<
-	std::endl;
-	std::cout << "\taddress ptr2: " << &ptr2 <<
-				"\n\tname: " << ptr2.name <<
-				"\n\tage: " << ptr2.age <<
-				"\n\taddress next: " << ptr2.next <<
-	std::endl << std::endl;
-
-	Serializer a;
-
-	Data *reserialized_struct = a.deserialize(a.serialize(&ptr));
-
-	std::cout << "Here is the reserialized structs:" <<
-				"\n\taddress: " << reserialized_struct <<
-				"\n\tname: " << reserialized_struct->name <<
-				"\n\tage: " << reserialized_struct->age <<
-				"\n\taddress next: " << reserialized_struct->next <<
-	std::endl;
-	std::cout << "\taddress ptr2: " << &ptr2 <<
-				"\n\tname: " << ptr2.name <<
-				"\n\tage: " << ptr2.age <<
-				"\n\taddress next: " << ptr2.next <<
-	std::endl << std::endl;
+	std::cout << "-----------------------------------------------------------------------------" << std::endl;
+	std::cout << "&data            : " << &data << std::endl;
+	std::cout << "deserializeValue : " << deserializedValue << std::endl;
+	std::cout << "DATA TITLE " <<deserializedValue->name << std::endl;
+	std::cout << "DATA NUM " <<deserializedValue->num << std::endl;
 
 	return (0);
 }

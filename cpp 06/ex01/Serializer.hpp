@@ -1,21 +1,29 @@
-#include <string>
+#ifndef SERIALIZER_H
+#define SERIALIZER_H
+
 #include <iostream>
-#include <stdint.h>
+# include<string>
+# include<cstdlib>
+# include<climits>
+# include<stdint.h>
 
 typedef struct Data
 {
     std::string name;
-    size_t age;
-    Data *next;
+    int num;
 } Data;
 
 class Serializer
 {
-    public:
+    private:
         Serializer();
-        ~Serializer();
         Serializer(const Serializer &src);
         Serializer &operator=(const Serializer &src);
-        uintptr_t serialize(Data* ptr);
-        Data* deserialize(uintptr_t raw);
+    public:
+        
+        ~Serializer();
+        static uintptr_t serialize(Data* ptr);
+        static Data* deserialize(uintptr_t raw);
 };
+
+#endif

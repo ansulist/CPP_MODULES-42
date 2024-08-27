@@ -6,7 +6,7 @@
 #include <cstdlib>
 #include <cstdio>
 
-static Base *generate(void)
+Base *generate(void)
 {
     switch (std::rand() % 3)
     {
@@ -25,7 +25,7 @@ static Base *generate(void)
     }
 }
 
-static void identify(Base *test)
+void identify(Base *test)
 {
     if (dynamic_cast<A*>(test))
         std::cout << "It's A" << std::endl;
@@ -44,36 +44,48 @@ void    identify(Base &test)
         A& a = dynamic_cast<A&>(test);
         std::cout << "this is A" << std::endl;
         (void)a;
-    } catch(const std::exception& e){}
+    } 
+    catch(const std::exception& e)
+    {}
     try
     {
         B& b = dynamic_cast<B&>(test);
         std::cout << "this is B" << std::endl;
         (void)b;
-    } catch(const std::exception& e){}
+    } 
+    catch(const std::exception& e)
+    {}
     try
     {
         C& c = dynamic_cast<C&>(test);
         std::cout << "this is C" << std::endl;
         (void)c;
-    } catch(const std::exception& e){}
+    } 
+    catch(const std::exception& e)
+    {}
 }
 
 int main()
 {
-	std::srand(std::time(0));
-	for (int j = 0; j < 5; j++)
-	{
-		Base *Test = generate();
-		if (Test == NULL)
-			return (1);
-		else
-		{
-			identify(Test);
-			identify(*Test);
-			delete (Test);
-			std::cout << std::endl;
-		}
-	}
+	// std::srand(std::time(0));
+	// for (int j = 0; j < 5; j++)
+	// {
+	// 	Base *Test = generate();
+	// 	if (Test == NULL)
+	// 		return (1);
+	// 	else
+	// 	{
+	// 		identify(Test);
+	// 		identify(*Test);
+	// 		delete (Test);
+	// 		std::cout << std::endl;
+	// 	}
+	// }
+
+    Base *base = generate();
+    identify(base);
+    identify(*base);
+    delete base;
+
 	return (0);
 }

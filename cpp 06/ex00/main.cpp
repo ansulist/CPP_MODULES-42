@@ -6,7 +6,7 @@
 /*   By: ansulist <ansulist@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 21:20:17 by ansulist          #+#    #+#             */
-/*   Updated: 2024/08/23 21:20:41 by ansulist         ###   ########.fr       */
+/*   Updated: 2024/08/27 20:45:47 by ansulist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ bool	isChar(std::string str)
 {
 	if (str.length() == 1)
 		return (true);
-	else if ((str == "nan" || str == "+inf" || str == "-inf"))
+	if ((str == "nan" || str == "+inf" || str == "-inf"))
 		return (true);
-	else if ((str == "nanf" || str == "+inff" || str == "-inff"))
+	if ((str == "nanf" || str == "+inff" || str == "-inff"))
 		return (true);
 	return (false);
 }
