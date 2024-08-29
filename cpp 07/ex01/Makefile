@@ -1,7 +1,7 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
-NAME = Form
+NAME = iter
 SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 

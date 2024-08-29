@@ -16,5 +16,4 @@ int main()
 	iter(i, 5, print);
 	std::string hi[] = {"hello", "world", "chicken", "zoro"};
 	iter(hi, 4, prints);
-	
 }
