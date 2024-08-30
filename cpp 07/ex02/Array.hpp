@@ -19,6 +19,7 @@ class Array
 			unsigned int size(void) const;
 			T &operator[](unsigned int n);
 };
+
 template <typename T>
 Array<T>::Array():sizee(0)
 {
@@ -37,6 +38,7 @@ Array<T>::Array(const Array &s): sizee(s.sizee)
 	arr = NULL;
 	*this = s;
 }
+
 template <typename T>
 Array<T> &Array<T>::operator=(const Array &s)
 {
@@ -57,14 +59,16 @@ Array<T>::~Array()
 }
 
 template<typename T>
-T& Array<T>::operator[](unsigned int index){
+T& Array<T>::operator[](unsigned int index)
+{
 	if (index >= sizee || arr == NULL)
 		throw std::out_of_range("index: out of range");
 	return arr[index];
 }
 
 template<typename T>
-unsigned int Array<T>::size(void) const{
+unsigned int Array<T>::size(void) const
+{
 	return (sizee);
 }
 
