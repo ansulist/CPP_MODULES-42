@@ -9,13 +9,15 @@ int main()
 		apple.push_back(90);
 		apple.push_back(1);
 		apple.push_back(9);
+
 		std::cout <<"size-> "<< apple.size() << std::endl;
 		int	find = 1;
 		std::vector<int>::iterator hi = easyfind(apple, find);
 		std::cout << *hi << std::endl;
+		
 		try
 		{
-			std::vector<int>::iterator hi = easyfind(apple, 3);
+			std::vector<int>::iterator hi = easyfind(apple, 99);
 			std::cout << *hi << std::endl;
 			
 		}

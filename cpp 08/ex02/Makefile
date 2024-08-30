@@ -1,8 +1,8 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
-NAME = Form
-SRCS = conversion.cpp main.cpp
+NAME = MutantStack
+SRCS = MutantStack.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
