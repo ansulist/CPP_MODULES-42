@@ -11,11 +11,11 @@ void printA(Array<T> &a)
 	std::cout << "list end" << std::endl;
 }
 
-int main ( void ) {
+int main ( void ) 
+{
 	Array<int> a(4);
 	Array<int> b(3);
-	Array<int> c;
-	c = 3;
+	Array<int> c = b;
 	Array<int> *test = new Array<int>(5);
 
 	printA(a);
@@ -34,6 +34,7 @@ int main ( void ) {
 	catch (std::exception & e)
 	{
 		std::cout << e.what() << std::endl;
+		std::cout << std::endl << "-------------------" << std::endl;
 	}
 	
 	printA(b);
@@ -48,6 +49,7 @@ int main ( void ) {
 	std::cout << "arr size: "<< a.size() << std::endl;
 	std::cout << "arr size: "<< b.size() << std::endl;
 	std::cout << "arr size: "<< c.size() << std::endl;
+	delete(test);
 	return (0);
 
 }

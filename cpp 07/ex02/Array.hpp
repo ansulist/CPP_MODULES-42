@@ -21,15 +21,19 @@ class Array
 };
 
 template <typename T>
-Array<T>::Array():sizee(0)
+Array<T>::Array()
 {
-	arr = new T[0]();
+	this->size = 0;
+	this->arr = NULL;
 }
 
 template <typename T>
-Array<T>::Array(unsigned int n): sizee(n)
+Array<T>::Array(unsigned int n)
 {
-	arr = new T(n);
+	this->sizee = n;
+	this->arr = new T[n];
+	for (unsigned int i = 0; i < n; i++)
+		this->arr[i] = 0;
 }
 
 template<typename T>

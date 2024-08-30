@@ -7,6 +7,7 @@ template <typename T>
 class MutantStack : public std::stack<T>
 {
     public:
+        // stacks
         MutantStack<T>()
         {}
         MutantStack<T>(const MutantStack<T> &m)
@@ -23,6 +24,9 @@ class MutantStack : public std::stack<T>
         }
         ~MutantStack<T>()
         {}
+        //
+
+        // Iterators
         typedef typename std::stack<T>::container_type::iterator iterator;
         iterator begin()
         {
