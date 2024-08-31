@@ -69,6 +69,8 @@
 		"utility": "cpp",
 		"vector": "cpp",
 		"memory_resource": "cpp",
-		"charconv": "cpp"
+		"charconv": "cpp",
+		"__tree": "cpp",
+		"map": "cpp"
 	}
 }
