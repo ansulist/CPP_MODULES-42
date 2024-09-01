@@ -19,7 +19,6 @@ int main()
 		{
 			std::vector<int>::iterator hi = easyfind(apple, 99);
 			std::cout << *hi << std::endl;
-			
 		}
 		catch(const std::exception& e)
 		{
