@@ -45,8 +45,8 @@ int main()
 		std::cerr << e.what() << std::endl;
 	}
 
-	// scenario 4 -> testing with 10k numbers
-	std::srand(static_cast<unsigned int>(std::time(nullptr)));
+	// scenario 4 -> testing with 10k numbers (from the subject)
+	std::srand(static_cast<unsigned int>(std::time(0)));
     unsigned int num_elements = 11000;
     Span spp(15000);
 
