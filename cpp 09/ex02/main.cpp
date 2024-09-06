@@ -2,7 +2,7 @@
 
 int main(int ac, char **av)
 {
-    if (ac <= 2)
+    if (ac < 2)
         std::cout << "input needed, add some numbers" << std::endl;
     else
 	{

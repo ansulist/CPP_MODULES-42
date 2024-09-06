@@ -59,47 +59,64 @@ int PmergeMe::atoii(const char* str)
     return result * sign;
 }
 
-void insert_into_sorted(std::vector<int>& sorted, int element) {
-    std::vector<int>::iterator it = std::lower_bound(sorted.begin(), sorted.end(), element);
-    sorted.insert(it, element);
+void merge_vec(std::vector<int>& vec, int left, int mid, int right)
+{
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+
+    std::vector<int> L(n1), R(n2);
+
+    for (int i = 0; i < n1; ++i)
+    {
+        L[i] = vec[left + i];
+    }
+
+    for (int j = 0; j < n2; ++j)
+    {
+        R[j] = vec[mid + 1 + j];
+    }
+
+    int i = 0, j = 0, k = left;
+
+    while (i < n1 && j < n2)
+    {
+        if (L[i] <= R[j])
+        {
+            vec[k] = L[i];
+            i++;
+        }
+        else
+        {
+            vec[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    while (i < n1)
+    {
+        vec[k] = L[i];
+        i++;
+        k++;
+    }
+
+    while (j < n2)
+    {
+        vec[k] = R[j];
+        j++;
+        k++;
+    }
 }
 
-void vector_sorting_and_merge(std::vector<int>& vec, int left, int right) 
+void vector_sorting_and_merge(std::vector<int>& vec, int left, int right)
 {
-    if (right - left <= 1)
-        return;
+    if (left < right)
+    {
+        int mid = left + (right - left) / 2;
 
-    std::vector<int> small_half, large_half;
-    for (int i = left; i < right; i += 2) 
-	{
-        if (i + 1 < right) 
-		{
-            if (vec[i] < vec[i + 1]) 
-			{
-                small_half.push_back(vec[i]);
-                large_half.push_back(vec[i + 1]);
-            } 
-			else 
-			{
-                small_half.push_back(vec[i + 1]);
-                large_half.push_back(vec[i]);
-            }
-        } 
-		else 
-            small_half.push_back(vec[i]);
-    }
-    vector_sorting_and_merge(small_half, 0, small_half.size());
-    vector_sorting_and_merge(large_half, 0, large_half.size());
-
-    std::vector<int> sorted_list = small_half; // Start with sorted smaller half
-    for (size_t i = 0; i < large_half.size(); ++i) 
-	{
-        insert_into_sorted(sorted_list, large_half[i]);
-    }
-
-    for (int i = left, j = 0; i < right; ++i, ++j) 
-	{
-        vec[i] = sorted_list[j];
+        vector_sorting_and_merge(vec, left, mid);
+        vector_sorting_and_merge(vec, mid + 1, right);
+        merge_vec(vec, left, mid, right);
     }
 }
 
@@ -160,19 +177,40 @@ void PmergeMe::sort_lst(std::list<int> &list)
 
 void PmergeMe::check_args_and_push(char **av)
 {
-	int num;
-	for (int i = 1; av[i]; i++)
+    int num;
+
+    // Loop through all arguments starting from av[1]
+    for (int i = 1; av[i]; i++)
     {
-        if (av[i][0] == '-')
-            throw std::invalid_argument("Error");
-        if (check_nbr(av[i]))
+        // Check if the argument contains space-separated numbers
+        if (strchr(av[i], ' '))
+        {
+            char* token = strtok(av[i], " ");
+            while (token != NULL)
+            {
+                if (check_nbr(token))
+                {
+                    num = atoii(token);
+                    vec.push_back(num);
+                    lstt.push_back(num);
+                }
+                else
+                {
+                    throw std::invalid_argument("Error in string numbers");
+                }
+                token = strtok(NULL, " ");
+            }
+        }
+        else if (check_nbr(av[i]))  // If the argument is a single number
         {
             num = atoii(av[i]);
             vec.push_back(num);
             lstt.push_back(num);
         }
         else
-            throw std::invalid_argument("Error");
+        {
+            throw std::invalid_argument("Error in other arguments");
+        }
     }
 }
 
