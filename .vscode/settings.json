@@ -73,6 +73,7 @@
 		"__tree": "cpp",
 		"map": "cpp",
 		"__cxx_version": "cpp",
-		"filesystem": "cpp"
+		"filesystem": "cpp",
+		"list": "cpp"
 	}
 }
