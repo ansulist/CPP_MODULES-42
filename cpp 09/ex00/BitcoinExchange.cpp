@@ -94,7 +94,7 @@ bool checkValueValidity(std::string const price)
         else if (!std::isdigit(static_cast<unsigned char>(*it))) 
             return false;
     }
-    if (price.back() == '.')
+    if (price[price.size() - 1] == '.')
         return false; 
     return (true);
 }
